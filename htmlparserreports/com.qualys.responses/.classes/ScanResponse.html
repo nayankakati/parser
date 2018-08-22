@@ -1,0 +1,145 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ScanResponse</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.qualys.responses</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ScanResponse (com.qualys.responses)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ScanResponse</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (13/ 13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (19/ 19)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.qualys.responses;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.qualys.enums.ScanStatus;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;
+<b class="fc"><i>6</i>&nbsp;public class ScanResponse extends Response {</b>
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;	private Long id;
+<i>9</i>&nbsp;	private String hostname;
+<i>10</i>&nbsp;	private ScanStatus scanStatus;
+<i>11</i>&nbsp;	private String ipAddress;
+<i>12</i>&nbsp;	private String title;
+<i>13</i>&nbsp;	private String submittedOn;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;	public Long getId() {
+<b class="fc"><i>16</i>&nbsp;		return id;</b>
+<i>17</i>&nbsp;	}
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;	public void setId(Long id) {
+<b class="fc"><i>20</i>&nbsp;		this.id = id;</b>
+<b class="fc"><i>21</i>&nbsp;	}</b>
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;	public String getHostname() {
+<b class="fc"><i>24</i>&nbsp;		return hostname;</b>
+<i>25</i>&nbsp;	}
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;	public void setHostname(String hostname) {
+<b class="fc"><i>28</i>&nbsp;		this.hostname = hostname;</b>
+<b class="fc"><i>29</i>&nbsp;	}</b>
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;	public ScanStatus getScanStatus() {
+<b class="fc"><i>32</i>&nbsp;		return scanStatus;</b>
+<i>33</i>&nbsp;	}
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;	public void setScanStatus(ScanStatus scanStatus) {
+<b class="fc"><i>36</i>&nbsp;		this.scanStatus = scanStatus;</b>
+<b class="fc"><i>37</i>&nbsp;	}</b>
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;	public String getIpAddress() {
+<b class="fc"><i>40</i>&nbsp;		return ipAddress;</b>
+<i>41</i>&nbsp;	}
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;	public void setIpAddress(String ipAddress) {
+<b class="fc"><i>44</i>&nbsp;		this.ipAddress = ipAddress;</b>
+<b class="fc"><i>45</i>&nbsp;	}</b>
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;	public String getTitle() {
+<b class="fc"><i>48</i>&nbsp;		return title;</b>
+<i>49</i>&nbsp;	}
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;	public void setTitle(String title) {
+<b class="fc"><i>52</i>&nbsp;		this.title = title;</b>
+<b class="fc"><i>53</i>&nbsp;	}</b>
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;	public String getSubmittedOn() {
+<b class="fc"><i>56</i>&nbsp;		return submittedOn;</b>
+<i>57</i>&nbsp;	}
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;	public void setSubmittedOn(String submittedOn) {
+<b class="fc"><i>60</i>&nbsp;		this.submittedOn = submittedOn;</b>
+<b class="fc"><i>61</i>&nbsp;	}</b>
+<i>62</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-06-19 19:38</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ScanController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.qualys.controllers</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ScanController (com.qualys.controllers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ScanController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (15/ 15)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.qualys.controllers;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import static com.qualys.helpers.ResponseGenerator.createReportResponse;
+<i>4</i>&nbsp;import static com.qualys.helpers.ResponseGenerator.createScanResponse;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;import java.util.Arrays;
+<i>7</i>&nbsp;import java.util.List;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>10</i>&nbsp;import org.springframework.context.annotation.ComponentScan;
+<i>11</i>&nbsp;import org.springframework.http.HttpStatus;
+<i>12</i>&nbsp;import org.springframework.lang.NonNull;
+<i>13</i>&nbsp;import org.springframework.web.bind.annotation.GetMapping;
+<i>14</i>&nbsp;import org.springframework.web.bind.annotation.PathVariable;
+<i>15</i>&nbsp;import org.springframework.web.bind.annotation.PostMapping;
+<i>16</i>&nbsp;import org.springframework.web.bind.annotation.RequestBody;
+<i>17</i>&nbsp;import org.springframework.web.bind.annotation.RequestMapping;
+<i>18</i>&nbsp;import org.springframework.web.bind.annotation.RequestParam;
+<i>19</i>&nbsp;import org.springframework.web.bind.annotation.RestController;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;import com.qualys.entities.ScanDetails;
+<i>22</i>&nbsp;import com.qualys.responses.ErrorResponse;
+<i>23</i>&nbsp;import com.qualys.responses.Response;
+<i>24</i>&nbsp;import com.qualys.services.ScanService;
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;@RestController
+<i>28</i>&nbsp;@ComponentScan
+<i>29</i>&nbsp;@RequestMapping(&quot;/api&quot;)
+<b class="fc"><i>30</i>&nbsp;public class ScanController {</b>
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;	@Autowired
+<i>33</i>&nbsp;	private ScanService scanService;
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;	@PostMapping(&quot;/submit&quot;)
+<i>36</i>&nbsp;	public Response submitUrlForAScan(@RequestBody String urlAddr) {
+<b class="fc"><i>37</i>&nbsp;		if(!(urlAddr.contains(&quot;http&quot;)|| urlAddr.contains(&quot;https&quot;)))</b>
+<b class="fc"><i>38</i>&nbsp;			return new ErrorResponse(&quot;INVALID_URL_FORMAT&quot;, &quot;Invalid URL format, Please enter URL with http[s]&quot;);</b>
+<i>39</i>&nbsp;		try {
+<b class="fc"><i>40</i>&nbsp;					ScanDetails scanDetails = scanService.submitUrlForAScan(urlAddr);</b>
+<b class="fc"><i>41</i>&nbsp;					return createScanResponse(Arrays.asList(scanDetails)).get(0);</b>
+<b class="fc"><i>42</i>&nbsp;		} catch (Exception e) {</b>
+<b class="fc"><i>43</i>&nbsp;					return new ErrorResponse(HttpStatus.EXPECTATION_FAILED.name(), e.getMessage());</b>
+<i>44</i>&nbsp;		}
+<i>45</i>&nbsp;	}
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;	@GetMapping(&quot;/list&quot;)
+<i>48</i>&nbsp;	public List&lt;?&gt; listScan(@RequestParam(required = false) @NonNull Long fromScan, @RequestParam(required = false) @NonNull Long toScan, @RequestParam(required = false) @NonNull Integer size) {
+<i>49</i>&nbsp;		try {
+<b class="fc"><i>50</i>&nbsp;			List&lt;ScanDetails&gt; scanDetails = scanService.listScan(fromScan, toScan, size);</b>
+<b class="fc"><i>51</i>&nbsp;			return createScanResponse(scanDetails);</b>
+<b class="fc"><i>52</i>&nbsp;		} catch (Exception e) {</b>
+<b class="fc"><i>53</i>&nbsp;			return Arrays.asList(new ErrorResponse(HttpStatus.EXPECTATION_FAILED.name(), e.getMessage()));</b>
+<i>54</i>&nbsp;		}
+<i>55</i>&nbsp;	}
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;	@GetMapping(&quot;/scan/{id}&quot;)
+<i>58</i>&nbsp;	public List&lt;?&gt; getScanDetail(@PathVariable Long id) {
+<i>59</i>&nbsp;		try {
+<b class="fc"><i>60</i>&nbsp;			ScanDetails scanDetails = scanService.getScanDetail(id);</b>
+<b class="fc"><i>61</i>&nbsp;			return createReportResponse(scanDetails);</b>
+<b class="fc"><i>62</i>&nbsp;		} catch (Exception e) {</b>
+<b class="fc"><i>63</i>&nbsp;			return Arrays.asList(new ErrorResponse(HttpStatus.EXPECTATION_FAILED.name(), e.getMessage()));</b>
+<i>64</i>&nbsp;		}
+<i>65</i>&nbsp;	}
+<i>66</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-06-19 19:38</div>
+</div>
+</body>
+</html>

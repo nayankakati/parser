@@ -1,0 +1,115 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: RegexGenerator</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.qualys.helpers</a> ]
+</div>
+
+<h1>Coverage Summary for Class: RegexGenerator (com.qualys.helpers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RegexGenerator</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (5/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90.9%
+  </span>
+  <span class="absValue">
+    (10/ 11)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.qualys.helpers;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.regex.Matcher;
+<i>4</i>&nbsp;import java.util.regex.Pattern;
+<i>5</i>&nbsp;
+<b class="nc"><i>6</i>&nbsp;public class RegexGenerator {</b>
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;	public static Matcher getTitlePatternMatcher(String search) {
+<b class="fc"><i>9</i>&nbsp;		Pattern titlePattern = Pattern.compile(&quot;&lt;title[^&gt;]*&gt;([\\s\\S]+)&lt;\\/title&gt;&quot;);</b>
+<b class="fc"><i>10</i>&nbsp;		return titlePattern.matcher(search);</b>
+<i>11</i>&nbsp;	}
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;	public static Matcher getBodyTextPatternMatcher(String search) {
+<b class="fc"><i>14</i>&nbsp;		Pattern textPattern = Pattern.compile(&quot;(&lt;span[^&gt;]*&gt;([\\s\\S]*)&lt;\\/span)|(&lt;p[^&gt;]*&gt;([\\s\\S]*)&lt;\\/p&gt;)|(&lt;a[^&gt;]*&gt;([\\s\\S]*)&lt;\\/a)|(&lt;h[123456]+[^&gt;]*&gt;([\\s\\S]*)&lt;\\/h[123456]+)\n&quot;);</b>
+<b class="fc"><i>15</i>&nbsp;		return textPattern.matcher(search);</b>
+<i>16</i>&nbsp;	}
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;	public static Matcher getHtmlBodyPatternMatcher(String search) {
+<b class="fc"><i>19</i>&nbsp;		Pattern bodyPattern = Pattern.compile(&quot;.*?&lt;body.*?&gt;(.*?)&lt;/body&gt;.*?&quot;, Pattern.DOTALL);</b>
+<b class="fc"><i>20</i>&nbsp;		return bodyPattern.matcher(search);</b>
+<i>21</i>&nbsp;	}
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;	public static Matcher getImagePatternMatcher(String search) {
+<b class="fc"><i>24</i>&nbsp;		Pattern imagePattern = Pattern.compile(&quot;(&lt;img)[.]*&quot;);</b>
+<b class="fc"><i>25</i>&nbsp;		return imagePattern.matcher(search);</b>
+<i>26</i>&nbsp;	}
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;	public static Matcher getLinksPatternMatcher(String search) {
+<b class="fc"><i>29</i>&nbsp;		Pattern linkPattern = Pattern.compile(&quot;&lt;a([^&gt;]+)&gt;&quot;);</b>
+<b class="fc"><i>30</i>&nbsp;		return linkPattern.matcher(search);</b>
+<i>31</i>&nbsp;	}
+<i>32</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2018-06-19 19:38</div>
+</div>
+</body>
+</html>
